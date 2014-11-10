@@ -1,0 +1,244 @@
+package javabean;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.ServletException;
+
+public class Student {
+ 
+ private Connection con;
+ private Statement stmt;
+ private ResultSet rs;
+ 
+ private String ordernumber;
+ private String date;
+ private String pricesum;
+ private String baobeiname;
+ private String price;
+ private String quantity;
+ HttpServletRequest request=ServletActionContext.getRequest();
+ String Ordernumber = request.getParameter("ordernumber");
+ String Date = request.getParameter("date");
+ String Pricesum = request.getParameter("pricesum");
+ String Baobeiname = request.getParameter("baobeiname");
+ String Price = request.getParameter("price");
+ //String oldbaobeiname = request.getParameter("oldbaobeiname");
+ String Quantity = request.getParameter("quantity");
+ /*
+  * 获取所有学生信息
+  */
+ public String getAllStudents() throws Exception {
+  List list = new ArrayList();
+  String sql = "select * from curd";
+  //System.out.println("-------hello-------");
+  try{
+   rs = executeQuery(sql);
+   while(rs.next()){
+    Student temp = new Student();
+    temp.setordernumber(rs.getString(1));
+    temp.setdate(rs.getString(2));
+    temp.setpricesum(rs.getString(3));
+    temp.setbaobeiname(rs.getString(4));
+    temp.setprice(rs.getString(5));
+    temp.setquantity(rs.getString(6));
+    list.add(temp);
+   }
+  }catch(Exception e){
+   System.out.println(e.toString());
+  }finally{
+   close();
+  }
+  HttpServletRequest request=ServletActionContext.getRequest();
+  request.setAttribute("studentlist",list);
+  return "success";
+ }
+ 
+ /*
+  * 添加学生
+  */
+ public String add(){
+  String sql = "insert into curd(ordernumber,date,pricesum,baobeiname,price,quantity) values('"+Ordernumber+"','"+Date+"','"+Pricesum+"','"+Baobeiname+"','"+Price+"','"+Quantity+ "')";
+  try{
+   executeUpdate(sql);
+   getAllStudents();
+  }catch(Exception e){
+   System.out.println(e.toString());
+  }finally{
+   close();
+  }
+  return "success";
+ }
+ 
+ /*
+  * 删除学生
+  */
+ public String delete() throws Exception {
+  String sql = "delete from curd where baobeiname='"+Baobeiname+"'";
+  try{
+   int n=executeUpdate(sql);
+   System.out.println("--------------"+n);
+   getAllStudents();
+  }catch(Exception e){
+   System.out.println(e.toString());
+  }finally{
+   close();
+  }
+  return "success";
+ }
+ 
+ /*
+  * 修改学生
+  */
+ public String edit()throws Exception{
+  String sql="update curd set ordernumber='"+Ordernumber+"',date='"+Date+"',baobeiname='"+Baobeiname+"',pricesum='"+Pricesum+"',price='"+Price+"',quantity='"+Quantity+"'where baobeiname='"+Baobeiname+"'";
+  try{ 
+   executeUpdate(sql);
+   getAllStudents();
+  }catch(Exception e){
+   System.out.println(e.toString());
+  }finally{
+   close();
+  }
+  return "success";
+ }
+ 
+ /*
+  * 根据学号查询学生
+  */
+ public String search()throws Exception{
+  List list = new ArrayList();
+  String sql = "select * from curd where baobeiname='"+Baobeiname+"'";
+  try{
+   rs = executeQuery(sql);
+   if(rs.next()){
+    Student temp = new Student();
+    temp.setordernumber(rs.getString(1));
+    temp.setdate(rs.getString(2));
+    temp.setpricesum(rs.getString(3));
+    temp.setbaobeiname(rs.getString(4));
+    temp.setprice(rs.getString(5));
+    temp.setquantity(rs.getString(6));
+    list.add(temp);
+   }
+  }catch(Exception e){
+   System.out.println(e.toString());
+  }finally{
+   close();
+  }
+  HttpServletRequest request=ServletActionContext.getRequest();
+  request.setAttribute("studentlist",list);
+  return "success";
+ }
+ 
+ /*
+  * 执行更新等操作
+  */
+ public int executeUpdate(String sql)throws SQLException,ClassNotFoundException{
+  return getStatement().executeUpdate(sql);
+ }
+ 
+ /*
+  * 关闭对象
+  */
+ public void close(){
+  if(rs!=null)
+   try{rs.close();}catch(Exception e){}
+  if(stmt!=null)
+   try{stmt.close();}catch(Exception e){}
+  if(con!=null)
+   try{con.close();}catch(Exception e){}
+ }
+ 
+ /*
+  * 执行有结果集返回的查询
+  */
+ public ResultSet executeQuery(String sql) throws SQLException,ClassNotFoundException{
+  return getStatement().executeQuery(sql);
+ }
+ 
+ /*
+  * 获取语句对象
+  */
+ public Statement getStatement() throws SQLException,ClassNotFoundException{
+  if(stmt==null){
+   stmt = getConnection().createStatement();
+  }
+  return stmt;
+ }
+ 
+ /*
+  * 获取连接
+  */
+ public Connection getConnection() throws SQLException,ClassNotFoundException{
+  if(con==null){
+   Class.forName("com.mysql.jdbc.Driver");
+   con = DriverManager.getConnection("jdbc:mysql://localhost:3306/operation", "root", "angel99627");
+  }
+  return con;
+ }
+
+ public String getordernumber() {
+  return ordernumber;
+ }
+
+ public void setordernumber(String ordernumber) {
+  this.ordernumber = ordernumber;
+ }
+
+ public String getdate() {
+  return date;
+ }
+
+ public void setdate(String date) {
+  this.date = date;
+ }
+
+ public String getpricesum() {
+  return pricesum;
+ }
+
+ public void setpricesum(String pricesum) {
+  this.pricesum = pricesum;
+ }
+ public String getbaobeiname() {
+	  return baobeiname;
+	 }
+public void setbaobeiname(String baobeiname) throws UnsupportedEncodingException {
+	this.baobeiname = new String( baobeiname.getBytes("ISO8859-1"),"gb2312"); 
+
+}
+public String getprice() {
+	 return price;
+}
+
+public void setprice(String price) {
+	 this.price = price;
+	}
+public String getquantity() {
+	  return quantity;
+	 }
+
+ public void setquantity(String quantity) {
+	  this.quantity = quantity;
+	 }
+ public static void main(String[] args){
+  Student student = new Student();
+ }
+}
