@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="register" extends="struts-default" namespace="/">
+		<action name="register" class="register.Register" method="add">
+			<result name="success">
+				/register_success.jsp
+			</result>
+			<result name="fail">
+				/register_fail.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="login" extends="struts-default" namespace="/">
+		<action name="login" class="login.Login" method="login">
+			<result name="success">
+				/Login_after.jsp
+			</result>
+			<result name="fail_non">
+				/login_fail_non.jsp
+			</result>
+			<result name="fail">
+				/login_fail.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="tb" namespace="/" extends="struts-default">
+		<action name="UploadAction" class="tb.UploadAction">
+			<result name="success">/itemlist.jsp</result>
+		</action>
+	</package>
+
+	<package name="general" namespace="/" extends="struts-default">
+		<action name="Uploadshop" class="general.Upload_shop">
+			<result name="success">/shop_list.jsp</result>
+			<result name="success_amazon">/amazon.jsp</result>
+		</action>
+	</package>
+	
+	<package name="general_communication" namespace="/" extends="struts-default">
+		<action name="Upload_communication" class="general_communication.UploadC">
+			<result name="success_communication">/communication_list.jsp</result>
+		</action>
+	</package>
+	
+	<package name="general_score" namespace="/" extends="struts-default">
+		<action name="UploadS" class="general_score.UploadS">
+			<result name="success">/score_list.jsp</result>
+		</action>
+	</package>
+	
+	<package name="showDetails" extends="struts-default">
+	    <action name="delete_col" class="showDetails.Curd" method="delete_col">
+			<result name="success">/shop_list.jsp</result>
+		</action>
+	    <action name="deletet" class="showDetails.Curd" method="delete1">
+			<result name="success">/itemlist.jsp</result>
+		</action>
+
+		<action name="list" class="showDetails.Curd" method="getAllCurds">
+			<result name="success">/shop_list.jsp</result>	
+		</action>
+     
+		<action name="delete" class="showDetails.Curd" method="delete">
+			<result name="success">/shop_list.jsp</result>
+		</action>
+		
+		<action name="add" class="showDetails.Curd" method="add">
+			<result name="success">/shop_list.jsp</result>
+		</action>
+
+		<action name="edit" class="showDetails.Curd" method="edit">
+			<result name="success">/shop_list.jsp</result>
+		</action>
+
+		<action name="search" class="showDetails.Curd" method="search">
+			<result name="success">/search.jsp</result>
+			<result name="success_communication">/communication_list.jsp</result>
+		</action>
+
+		<action name="list1" class="showDetails.Curd_communication" method="getAllCurds">
+			<result name="success_communication">/communication_list.jsp</result>
+		</action>
+
+		<action name="delete1" class="showDetails.Curd_communication" method="delete">
+			<result name="success_communication">/communication_list.jsp</result>
+		</action>
+
+		<action name="add1" class="showDetails.Curd_communication" method="add">
+			<result name="success_communication">/communication_list.jsp</result>
+		</action>
+
+		<action name="edit1" class="showDetails.Curd_communication" method="edit">
+			<result name="success_communication">/communication_list.jsp</result>
+		</action>
+
+		<action name="search1" class="showDetails.Curd_communication" method="search">
+			<result name="success">/communication_list.jsp</result>
+		</action>
+		
+		<action name="list2" class="showDetails.Curd_S" method="getAllCurds">
+			<result name="success">/score_list.jsp</result>
+		</action>
+
+		<action name="delete2" class="showDetails.Curd_S" method="delete">
+			<result name="success">/score_list.jsp</result>
+		</action>
+
+		<action name="add2" class="showDetails.Curd_S" method="add">
+			<result name="success">/score_list.jsp</result>
+		</action>
+
+		<action name="edit2" class="showDetails.Curd_S" method="edit">
+			<result name="success">/score_list.jsp</result>
+		</action>
+
+		<action name="search2" class="showDetails.Curd_S" method="search">
+			<result name="success">/score_list.jsp</result>
+		</action>
+		
+		<action name="list3" class="showDetails.Curd" method="getAllCurds1">
+			<result name="success">/amazon.jsp</result>
+		</action>
+
+		<action name="delete3" class="showDetails.Curd" method="delete_amazon">
+			<result name="success">/amazon.jsp</result>
+		</action>
+		
+
+	</package>
+	
+
+</struts>    
