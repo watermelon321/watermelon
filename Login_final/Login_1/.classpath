@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.struts2.MYECLIPSE_STRUTS21_CORE"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/avro-1.7.6.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/commons-compress-1.4.1.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/commons-pool2-2.0.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/jedis-2.4.2.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/juniversalchardet-1.0.3.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/paranamer-2.3.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/snappy-java-1.0.5.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/WebCollector-1.31.jar"/>
+	<classpathentry kind="lib" path="D:/2860359561/FileRecv/WebCrawler-jar/xz-1.0.jar"/>
+	<classpathentry kind="lib" path="D:/1my download/软件工程/实验/lab2/mysql-connector-java-5.1.18-bin.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>
