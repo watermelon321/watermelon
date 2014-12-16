@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="register" extends="struts-default" namespace="/">
+		<action name="register" class="register.Register" method="add">
+			<result name="success">
+				/register_success.jsp
+			</result>
+			<result name="fail">
+				/register_fail.jsp
+			</result>
+			<result name="fail_remain">
+				/welcome.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="login" extends="struts-default" namespace="/">
+		<action name="login" class="login.Login" method="login">
+			<result name="success">
+				/login_success.jsp
+			</result>
+			<result name="fail_non">
+				/login_fail_non.jsp
+			</result>
+			<result name="fail">
+				/login_fail.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="general" namespace="/" extends="struts-default">
+		<action name="UploadAction" class="general.Upload_shop" method="origin">
+			<result name="success">/itemlist.jsp</result>
+		</action>
+		<action name="UploadAction_login" class="general.Upload_shop" method="login">
+			<result name="success">/item_history.jsp</result>
+		</action>
+		<action name="UploadAction_login_origin" class="general.Upload_shop" method="login">
+			<result name="success">/itemlist_login.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="showDetails" namespace="/" extends="struts-default">
+		<action name="delete" class="showDetails.Curd" method="delete">
+			<result name="success">/itemlist.jsp</result>
+		</action>
+		<action name="delete_hisrow" class="showDetails.Curd" method="delete_hisrow">
+			<result name="success">/item_history.jsp</result>
+		</action>
+		<action name="search_history" class="showDetails.Curd" method="search_history">
+			<result name="success">/item_history.jsp</result>
+		</action>
+		<action name="delete_col" class="showDetails.Curd" method="delete_col">
+			<result name="success">/itemlist.jsp</result>
+		</action>
+		<action name="delete_collog" class="showDetails.Curd" method="delete_col">
+			<result name="success">/itemlist_login.jsp</result>
+		</action>
+		<action name="deletelogrow" class="showDetails.Curd" method="delete">
+			<result name="success">/itemlist_login.jsp</result>
+		</action>
+		<action name="delete_colhis" class="showDetails.Curd" method="delete_colhis">
+			<result name="success">/item_history.jsp</result>
+		</action>
+		<action name="delete_history" class="showDetails.Curd" method="delete_history">
+			<result name="success">/login_success.jsp</result>
+		</action>
+		<action name="search" class="showDetails.Curd" method="search">
+			<result name="success">/search_origin.jsp</result>
+		</action>
+		<action name="search_his" class="showDetails.Curd" method="search_his">
+			<result name="success">/search_history.jsp</result>
+		</action>
+		<action name="search_login" class="showDetails.Curd" method="search">
+			<result name="success">/search_login.jsp</result>
+		</action>
+		<action name="refresh" class="showDetails.Curd" method="getAllHistory">
+		<result name="success">
+		/login_success.jsp
+		</result>
+		</action>
+	
+	</package>
+
+</struts>    
